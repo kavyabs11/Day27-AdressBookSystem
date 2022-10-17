@@ -16,17 +16,32 @@ namespace AdressBookSystem
 
         public void addContacts(string fistName, string lastName, string address, string city, string state, int zip, long phoneNumber, string email)
         {
-            Contact contact = new Contact();
-            contact.fistName = fistName;
-            contact.lastName = lastName;
-            contact.address = address;
-            contact.city = city;
-            contact.state = state;
-            contact.zip = zip;
-            contact.phoneNumber = phoneNumber;
-            contact.email = email;
-            contactList.Add(contact);
+            bool duplicate = equals(fistName, lastName);
+
+            if (!duplicate)
+            {
+                Contact contact = new Contact();
+                contact.fistName = fistName;
+                contact.lastName = lastName;
+                contact.address = address;
+                contact.city = city;
+                contact.state = state;
+                contact.zip = zip;
+                contact.phoneNumber = phoneNumber;
+                contact.email = email;
+                contactList.Add(contact);
+            }
+            else
+                Console.WriteLine("Cannot add duplicate Contact");
         }
+        private bool equals(string fName, string lName)
+        {
+            if (this.contactList.Any(e => e.fistName == fName && e.lastName == lName))
+                return true;
+            else
+                return false;
+        }
+
         public void print()
         {
             foreach (Contact contact in contactList)
