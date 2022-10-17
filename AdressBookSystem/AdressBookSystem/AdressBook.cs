@@ -9,6 +9,7 @@ namespace AdressBookSystem
     class AdressBook
     {
         private List<Contact> contactList;
+
         public AdressBook()
         {
             contactList = new List<Contact>();
@@ -204,6 +205,33 @@ namespace AdressBookSystem
                     Console.WriteLine("Contact not found");
                     break;
 
+            }
+        }
+        public void ViewContact()
+        {
+            Console.WriteLine("Enter your Choice for Viewing a Person by:");
+            Console.WriteLine("1. City 2. State");
+            String choice = Console.ReadLine();
+            int choice1 = Convert.ToInt32(choice);
+
+            switch (choice1)
+            {
+                case 1:
+                    Console.WriteLine("Enter your City");
+                    String city = Console.ReadLine();
+                    foreach (Contact contact in this.contactList.FindAll(e => e.city == city))
+                        Console.WriteLine("View Person Name" + contact.fistName + contact.lastName);
+
+                    break;
+                case 2:
+                    Console.WriteLine("Enter your State");
+                    String state = Console.ReadLine();
+                    foreach (Contact contact in this.contactList.FindAll(e => e.state == state))
+                        Console.WriteLine("View Person Name" + contact.fistName + contact.lastName);
+                    break;
+                default:
+                    Console.WriteLine("Contact not found");
+                    break;
             }
         }
     }

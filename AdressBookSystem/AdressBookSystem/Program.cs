@@ -14,7 +14,7 @@
             addressBook.print();
 
 
-            Console.WriteLine("What you want to perform ? Press 1 for Edit the details : \n Press 2 for Delete  details : \n Press 3 for SEARCH  details : ");
+            Console.WriteLine("What you want to perform ? Press 1 for Edit the details : \n Press 2 for Delete  details : \n Press 3 for SEARCH  details : \n Press 4 for View City Or State  details :");
             int Selectchoice = Convert.ToInt32(Console.ReadLine());
             switch (Selectchoice)
             {
@@ -36,6 +36,9 @@
                     break;
                 case 3:
                     addressBook.Search();
+                    break;
+                case 4:
+                    addressBook.ViewContact();
                     break;
                 default:
                     Console.WriteLine("Please enter the valid number : ");
@@ -64,5 +67,6 @@
             addressBook.addContacts(firstName, lastName, address, city, state, zip, phoneNumber, email);
             Console.ReadLine();
         }
+
     }
 }
