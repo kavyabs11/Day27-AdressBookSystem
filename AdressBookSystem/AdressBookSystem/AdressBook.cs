@@ -177,6 +177,34 @@ namespace AdressBookSystem
             else
                 Console.WriteLine("Deletion Done.");
         }
+        public void Search()
+        {
+            Console.WriteLine("Enter your Choice for Searching a Person in");
+            Console.WriteLine("1. City 2. State");
+            int choice1 = Convert.ToInt32(Console.ReadLine());
+            switch (choice1)
+            {
+                case 1:
+                    Console.WriteLine("Enter your City Name:");
+                    String NameToSearchInCity = Console.ReadLine();
+                    foreach (Contact personal_Details in this.contactList.FindAll(e => e.city == NameToSearchInCity))
+                    {
+                        Console.WriteLine("City of " + personal_Details.fistName + "" + personal_Details.lastName + " is : " + personal_Details.city);
+                    }
+                    break;
+                case 2:
+                    Console.WriteLine("Enter your State Name:");
+                    String nameToSearchInState = Console.ReadLine();
+                    foreach (Contact personal_Details in this.contactList.FindAll(e => e.state == nameToSearchInState))
+                    {
+                        Console.WriteLine("City of " + personal_Details.fistName + "" + personal_Details.lastName + " is : " + personal_Details.state);
+                    }
+                    break;
+                default:
+                    Console.WriteLine("Contact not found");
+                    break;
 
+            }
+        }
     }
 }
